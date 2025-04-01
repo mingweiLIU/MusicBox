@@ -1,0 +1,9 @@
+#去掉build文件夹
+/build/
+/.vs/
+#
+/out/
+/mid/
+/3rd/
+/exe/
+/.vs/

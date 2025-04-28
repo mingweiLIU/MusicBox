@@ -2,7 +2,7 @@
 void SpectumTimer::Start()
 {
 	timerID = timeSetEvent(
-		25,                   // 1秒间隔
+		25,                   // 间隔
 		25,                      // 分辨率
 		&SpectumTimer::TimerCall, // 静态回调
 		(DWORD_PTR)this,        // 传递对象指针

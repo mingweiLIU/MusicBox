@@ -22,12 +22,10 @@ void RenderingThread::run()
 		return;
 	}
 
-	do 
+	do
 	{
 		viewer->frame();
-		bool isCancel= testCancel();
-		bool viewerDone = viewer->done();
-	//} while (!testCancel()&&viewer->done()&&!_done);
-	} while (true);
+	} while (!testCancel());
+	//} while (true);
 }
 

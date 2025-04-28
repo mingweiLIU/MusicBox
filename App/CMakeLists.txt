@@ -30,7 +30,8 @@ WTGetTypeFilesRelative(
     Recurse ON
 )
 
-add_executable(${PROJECT_NAME} WIN32 ${SourceFileNames} ${HeaderFileNames})
+add_executable(${PROJECT_NAME} WIN32 ${SourceFileNames} ${HeaderFileNames}
+    AppUI.h AppUI.cpp)
 # set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_ENVIRONMENT "PATH=${OSG_DIR}/bin;$ENV{PATH}")
 # get_target_property(DEBUG_ENV ${PROJECT_NAME} VS_DEBUGGER_ENVIRONMENT)
 # message(STATUS "VS_DEBUGGER_ENVIRONMENT = ${DEBUG_ENV}")
@@ -43,19 +44,17 @@ set(includeDirs
 target_include_directories(${PROJECT_NAME} PUBLIC ${includeDirs})
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
-    ${BASS_DIR}/bass.lib
-    user32.lib
-    gdi32.lib
-    gdiplus.lib
-    Comctl32.lib
+    ${BASS_DIR}/bass.lib    
+    ${BASS_DIR}/basswasapi.lib
     dwmapi.lib
-    UxTheme.lib
+    dwrite.lib
+    d2d1.lib
     winmm.lib
 )
 
 # 移除UNICODE定义（如果存在）
 remove_definitions(-DUNICODE -D_UNICODE)
-    
+
 # 显式设置多字节字符集
 add_definitions(-D_MBCS)
 
